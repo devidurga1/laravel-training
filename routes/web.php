@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
 
 use App\Models\Category;
 
@@ -25,8 +27,13 @@ Route::get('/', function () {
 
 Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
+Route::resource('orders', OrderController::class);
 
+Route::get("register", [UserController::class, 'create']);
+Route::get("login", [UserController::class, 'createlogin']);
 
+Route::post("register/create", [UserController::class, 'store']);
+Route::post("login/createlogin", [UserController::class, 'storelogin']);
 
 
 Route::get('showlist', [ProductController::class, 'showlist']);

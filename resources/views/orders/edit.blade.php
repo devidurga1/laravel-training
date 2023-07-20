@@ -12,13 +12,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-           <!-- <h1 class="m-0">Starter Page</h1>-->
+            <h1 class="m-0">Starter Page</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-            <!--  <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>-->
-              <li class="breadcrumb-item"><a href="{{ route('categories.create') }}">Add New Product</a></li>
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Starter Page</li>
+              <li class="breadcrumb-item"><a href="{{ route('orders.create') }}">Add New Orderdate</a></li>
               
             </ol>
           </div><!-- /.col -->
@@ -32,7 +32,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Category</h2>
+                <h2>Edit Orderdate</h2>
             </div>
           <!--  <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('categories.index') }}"> Back</a>
@@ -51,26 +51,19 @@
         </div>
     @endif
   
-    <form action="{{ route('categories.update',$category->id) }}" method="POST">
+    <form action="{{ route('orders.update',$order->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>CatName:</strong>
-                    <input type="text" name="catname" value="{{ $category->catname }}" class="form-control" placeholder="CateName">
+                    <strong>Orderdate:</strong>
+                    <input type="date" name="orderdate" value="{{ $order->orderdate }}" class="form-control" placeholder="orderdate">
                 </div>
             </div>
 
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>status:</strong>
-                    <input type="text" name="status" value="{{ $category->status }}" class="form-control" placeholder="status">
-                </div>
-            </div>
             
-            </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>

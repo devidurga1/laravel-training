@@ -11,12 +11,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Starter Page</h1>
+         <!--   <h1 class="m-0">Starter Page</h1>-->
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
+             <!-- <li class="breadcrumb-item"><a href="#">Home</a></li>-->
+              <!--<li class="breadcrumb-item active">Starter Page</li>-->
               <li class="breadcrumb-item"><a href="{{ route('categories.create') }}">Add New Category</a></li>
               
             </ol>
@@ -27,7 +27,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Laravel 8 CRUD Example from scratch - ItSolutionStuff.com</h2>
+                <h2>Laravel-project</h2>
             </div>
           <!--  <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('products.create') }}"> Add New Product</a>

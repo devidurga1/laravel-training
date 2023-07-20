@@ -15,9 +15,9 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-             <!-- <li class="breadcrumb-item"><a href="#">Home</a></li>-->
+              <!--<li class="breadcrumb-item"><a href="#">Home</a></li>-->
              <!-- <li class="breadcrumb-item active">Starter Page</li>-->
-              <li class="breadcrumb-item"><a href="{{ route('products.create') }}">Add New Product</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('orders.create') }}">Add New Order</a></li>
               
             </ol>
           </div><!-- /.col -->
@@ -45,33 +45,25 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>proName</th>
-            <th>Product-status</th>
-            <th>catname</th>
             
             <th>orderdate</th>
             
-
-            
-            
             <th width="280px">Action</th>
         </tr>
-        @foreach ($products as $product)
+        @foreach ($orders as $order)
         
 
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $product->prodname }}</td>
-            <td>{{ $product->status }}</td>
-            <td>{{ $product->category->catname }}</td>
-            <td>{{ $product->order->orderdate }}</td>
-
+            <td>{{ $order->orderdate }}</td>
+            
+            
             <td>
-                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                <form action="{{ route('orders.destroy',$order->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('orders.show',$order->id) }}">Show</a>
     
-                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('orders.edit',$order->id) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')
@@ -83,7 +75,7 @@
         @endforeach
     </table>
   
-    {!! $products->links() !!}
+    {!! $orders->links() !!}
 
       
 

@@ -1,24 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Order;
 
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    
-
-
-
     public function showlist()
     {
         $products = Product::with('category')->get();
@@ -28,19 +18,17 @@ class ProductController extends Controller
         return view('showlist', compact('products', 'categories'));
     }
 
-    
-
-
-    
-     
-
     public function index()
     {
-        $products = Product::latest()->paginate(5);
     
-        return view('products.index',compact('products'))
+        $orders = Order::latest()->paginate(5);
+    
+        return view('orders.index',compact('orders'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
+    
+        
     }
+     
     /**
      * Show the form for creating a new resource.
      *
@@ -48,7 +36,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('orders.create');
     }
     
     /**
@@ -62,16 +50,16 @@ class ProductController extends Controller
 
     {
         $request->validate([
-            'prodname' => 'required',
-            'category_id'=>'required',
+            'orderdate' => 'required',
+            
             
             
         ]);
     
-        Product::create($request->all());
+        Order::create($request->all());
      
-        return redirect()->route('products.index')
-                        ->with('success','Product created successfully.');
+        return redirect()->route('orders.index')
+                        ->with('success','orderdate created successfully.');
     }
      
     /**
@@ -80,14 +68,14 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Order $order)
     {
-        return view('products.show',compact('product'));
+        return view('orders.show',compact('order'));
     } 
 
-    public function edit(Product $product)
+    public function edit(Order $order)
     {
-        return view('products.edit',compact('product'));
+        return view('orders.edit',compact('order'));
     }
     
     /**
@@ -97,17 +85,17 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Order $order)
     {
         $request->validate([
-            'prodname' => 'required',
+            'orderdate' => 'required',
             
         ]);
     
-        $product->update($request->all());
+        $order->update($request->all());
     
-        return redirect()->route('products.index')
-                        ->with('success','Product updated successfully');
+        return redirect()->route('orders.index')
+                        ->with('success','orderdate updated successfully');
     }
     
     /**
@@ -117,12 +105,11 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
   
-     public function destroy(Product $product)
+     public function destroy(Order $order)
     {
-        $product->delete();
+        $order->delete();
     
-        return redirect()->route('products.index')
-                        ->with('success','Product deleted successfully');
+        return redirect()->route('orders.index')
+                        ->with('success','orderdate deleted successfully');
     }
-       
 }

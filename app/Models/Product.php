@@ -22,6 +22,7 @@ class Product extends Model
         'prodname',
         'category_id',
         'order_id',
+        'status',
     ];
   
     public function category()
@@ -33,7 +34,7 @@ class Product extends Model
 
     public function order()
     {
-        return $this->belongsTo(order::class);
+        return $this->belongsTo(Order::class);
     }
 
 
