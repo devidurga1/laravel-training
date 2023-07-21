@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Hash;
+
 use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
@@ -77,10 +78,13 @@ class UserController extends Controller
     }
      
  
-    public function signOut() {
-        Session::flush();
-        Auth::logout();
+    public function signOut(Request $request) {
+       // Session::flush();
+       // Auth::logout();
    
+        Auth::logout();
+ 
+   $request->session()->flush();
         return Redirect('login');
     }
 

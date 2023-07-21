@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 
 use App\Models\Category;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,16 @@ Route::controller(\App\Http\Controllers\CategoryController::class)->group(functi
 Route::get('category', 'index');
 Route::get('category/create', 'create');
 Route::post('category' ,'store' );
+
+
+
+Route::get('dashboard', [UserController::class, 'dashboard']); 
+Route::get('login', [UserController::class, 'index'])->name('login');
+Route::post('custom-login', [UserController::class, 'customLogin'])->name('login.custom'); 
+Route::get('registration', [UserController::class, 'registration'])->name('register-user');
+Route::post('custom-registration', [UserController::class, 'customRegistration'])->name('register.custom'); 
+Route::get('signout', [UserController::class, 'signOut'])->name('signout');
+
 
 });
 
