@@ -3,95 +3,86 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Hash;
+use Session;
 use App\Models\User;
-use DB;
-use Illuminate\Support\Facades\DB as FacadesDB;
-
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
 
-    public function create() {
-        return view('registration-form');
+    
+       
+    
+    public function index()
+    {
+        return view('auth.login');
+    }  
+       
+ 
+    public function customLogin(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+    
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('dashboard')
+                        ->withSuccess('Signed in');
+        }
+   
+        return redirect("login")->withSuccess('Login details are not valid');
+    }
+ 
+ 
+ 
+    public function registration()
+    {
+        return view('auth.registration');
     }
 
-    // ----------- [ Form validate ] -----------
-    public function store(Request $request) {
-
-        $request->validate(
-            [
-                'name'              =>      'required|string|max:20',
-                'email'             =>      'required|email|unique:users,email',
-                'phone'             =>      'required|numeric|min:10',
-                'role'             =>       'required',
-                'password'          =>      'required|alpha_num|min:6',
-                'confirm_password'  =>      'required|same:password',
-                'address'           =>      'required|string'
+    public function customRegistration(Request $request)
+    {  
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+        ]);
             
-            
-            ]
-        );
-
-        $dataArray      =       array(
-            "name"          =>          $request->name,
-            "email"         =>          $request->email,
-            "phone"         =>          $request->phone,
-            'role'          =>          $request->role,
-            "address"       =>          $request->address,
-            "password"      =>          $request->password
-        );
-
-        $user           =       User::create($dataArray);
-        if(!is_null($user)) {
-            return back()->with("success", "Success! Registration completed");
-        }
-
-        else {
-            return back()->with("failed", "Alert! Failed to register");
-        }
+        $data = $request->all();
+        $check = $this->create($data);
+          
+        return redirect("dashboard")->withSuccess('You have signed-in');
     }
-
-
-
-
-    public function createlogin() {
-        return view('login-form');
-    }
-
-
-    // ----------- [ Form validate ] -----------
-    public function storelogin(Request $request) {
-
-
-        // dd($request->all());
-        $request->validate(
-            [
-                'email'              =>      'required',
-                
-            
-                'password'          =>      'required|alpha_num|min:6',
-                
-            
-            ]
-        );
-
-        $dataArray      =       array(
-            "name"          =>          $request->name,
-            "email"          =>          $request->email,
-            "password"      =>          $request->password
-        );
-
-        $user           =       User::create($dataArray);
-        if(!is_null($user)) {
-            return back()->with("success", "Success! Login completed");
+ 
+ 
+    public function create(array $data)
+    {
+      return User::create([
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'password' => Hash::make($data['password'])
+      ]);
+    }    
+     
+ 
+    public function dashboard()
+    {
+        if(Auth::check()){
+            return view('dashboard');
         }
-
-        else {
-            return back()->with("failed", "Alert! Failed to login");
-        }
+   
+        return redirect("login")->withSuccess('You are not allowed to access');
     }
-
-
-
+     
+ 
+    public function signOut() {
+        Session::flush();
+        Auth::logout();
+   
+        return Redirect('login');
+    }
 
 
 }
