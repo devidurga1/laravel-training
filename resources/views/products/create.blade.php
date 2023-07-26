@@ -11,12 +11,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Starter Page</h1>
+            <!--<h1 class="m-0">Starter Page</h1>-->
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
+             <!-- <li class="breadcrumb-item"><a href="#">Home</a></li>-->
+              <!--<li class="breadcrumb-item active">Starter Page</li>-->
               <li class="breadcrumb-item"><a href="{{ route('products.index') }}">Back</a></li>
               
             </ol>
@@ -52,23 +52,46 @@
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-                <strong>prodName:</strong>
-                <input type="text" name="prodname" class="form-control" placeholder="ProName">
+                <strong>productName:</strong>
+                <input type="text" name="product_name" class="form-control" placeholder="Product_Name">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+                <strong>status</strong>
+                <input type="text" name="status" class="form-control" placeholder="status">
+            </div>
+        </div>
+
+
+             
+
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+                <strong>descripttion</strong>
+                <input type="text" name="descripttion" class="form-control" placeholder="descripttion">
             </div>
         </div>
 
         
-        
 
         <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-                <strong>category_id:</strong>
-                <input type="number" name="category_id" class="form-control" placeholder="category_id">      
+                      <select class="form-control"  name="category_id">
+                        <option value="">Select  Category</option>
 
- </div>
+                        @foreach ($categories as $category)
+                          <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                        @endforeach
+                      </select>
+                    </div>
         </div>
+             
         
-  <br><br>
+	            
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

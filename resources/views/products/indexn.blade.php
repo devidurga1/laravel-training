@@ -17,7 +17,7 @@
             <ol class="breadcrumb float-sm-right">
              <!-- <li class="breadcrumb-item"><a href="#">Home</a></li>-->
               <!--<li class="breadcrumb-item active">Starter Page</li>-->
-              <li class="breadcrumb-item"><a href="{{ route('categories.create') }}">Add New Category</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('products.create') }}">Add New product</a></li>
               
             </ol>
           </div><!-- /.col -->
@@ -46,27 +46,42 @@
         <tr>
             <th>No</th>
             
-            <th>catname</th>
+            <th>product_name</th>
             <th>status</th>
+            <th>description</th>
+            <th>category_name</th>
+            <th>orderdate</th>
+            
+
+            
+
+
+            
+            
+
             <th width="280px">Action</th>
         </tr>
-        @foreach ($categories as $category)
-        
-
+        @foreach ($products as $product)
+    
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $category->category_name }}</td>
-            <td>{{ $category->status }}</td>
-            <td>{{ $category->description }}</td>
+            <td>{{ $product->product_name }}</td>
+            <td>{{ $product->status }}</td>
+            <td>{{ $product->description }}</td>
+            <td>{{$product->category->category_name ?? ""}}</td>
+            <td>{{$product->order->orderdate ?? ""}}</td>
+            
+            
+
             
 
             
             <td>
-                <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
+                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{ route('categories.show',$category->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
     
-                    <a class="btn btn-primary" href="{{ route('categories.edit',$category->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')
@@ -78,7 +93,6 @@
         @endforeach
     </table>
   
-    {!! $categories->links() !!}
 
       
 

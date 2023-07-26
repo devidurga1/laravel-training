@@ -11,13 +11,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-         <!--   <h1 class="m-0">Starter Page</h1>-->
+           <!-- <h1 class="m-0">Starter Page</h1>-->
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-             <!-- <li class="breadcrumb-item"><a href="#">Home</a></li>-->
-              <!--<li class="breadcrumb-item active">Starter Page</li>-->
-              <li class="breadcrumb-item"><a href="{{ route('categories.create') }}">Add New Category</a></li>
+              <!--<li class="breadcrumb-item"><a href="#">Home</a></li>-->
+             <!-- <li class="breadcrumb-item active">Starter Page</li>-->
+              <li class="breadcrumb-item"><a href="{{ route('orders.create') }}">Add New Order</a></li>
               
             </ol>
           </div><!-- /.col -->
@@ -27,7 +27,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Laravel-project</h2>
+                <h2>Laravel-Project</h2>
             </div>
           <!--  <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('products.create') }}"> Add New Product</a>
@@ -46,27 +46,38 @@
         <tr>
             <th>No</th>
             
-            <th>catname</th>
-            <th>status</th>
+            <th>orderdate</th>
+            <td>status</td>
+            <td>phone_Number</td>
+            <td>delivery_address</td>
+            <td>user_id</td>
+            <td>total_amount</td>
+            
+
+            
             <th width="280px">Action</th>
         </tr>
-        @foreach ($categories as $category)
+        @foreach ($orders as $order)
         
 
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $category->category_name }}</td>
-            <td>{{ $category->status }}</td>
-            <td>{{ $category->description }}</td>
-            
+            <td>{{ $order->orderdate }}</td>
+            <td>{{ $order->status }}</td>
+            <td>{{ $order->phone_Number}}</td>
+            <td>{{ $order->delivery_address }}</td>
+            <td>{{ $order->user_id }}</td>
+            <td>{{ $order->total_amount }}</td>
+
 
             
+            
             <td>
-                <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
+                <form action="{{ route('orders.destroy',$order->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{ route('categories.show',$category->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('orders.show',$order->id) }}">Show</a>
     
-                    <a class="btn btn-primary" href="{{ route('categories.edit',$category->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('orders.edit',$order->id) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')
@@ -78,7 +89,7 @@
         @endforeach
     </table>
   
-    {!! $categories->links() !!}
+    {!! $orders->links() !!}
 
       
 

@@ -12,12 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Starter Page</h1>
+           <!-- <h1 class="m-0">Starter Page</h1>-->
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
+            <!--  <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Starter Page</li>-->
               <li class="breadcrumb-item"><a href="{{ route('categories.create') }}">Add New Product</a></li>
               
             </ol>
@@ -58,7 +58,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>CatName:</strong>
-                    <input type="text" name="catname" value="{{ $category->catname }}" class="form-control" placeholder="CateName">
+                    <input type="text" name="category_name" value="{{ $category->category_name }}" class="form-control" placeholder="CateName">
                 </div>
             </div>
 
@@ -67,6 +67,14 @@
                 <div class="form-group">
                     <strong>status:</strong>
                     <input type="text" name="status" value="{{ $category->status }}" class="form-control" placeholder="status">
+                </div>
+            </div>
+
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong></strong>
+                    <input type="text" name="description" value="{{ $category->description }}" class="form-control" placeholder="description">
                 </div>
             </div>
             

@@ -16,6 +16,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         
+     $this->call(RoleSeeder::class);
+     $this->call(AdminSeeder::class);
+
+
+
+
+
         $faker = Faker::create();
         
         foreach (range(1,200) as $index) {

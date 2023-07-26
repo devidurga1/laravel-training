@@ -1,17 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Order;
+
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class OrderController extends Controller
 {
-    
-    
-      
     public function showlist()
     {
         $products = Product::with('category')->get();
@@ -24,9 +21,9 @@ class CategoryController extends Controller
     public function index()
     {
     
-        $categories = Category::latest()->paginate(5);
+        $orders = Order::latest()->paginate(5);
     
-        return view('categories.index',compact('categories'))
+        return view('orders.index',compact('orders'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     
         
@@ -38,12 +35,8 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-
     {
-        $categories = Category::all();
-    
-        return view('products.create', compact("categories"));
-        //return view('categories.create');
+        return view('orders.create');
     }
     
     /**
@@ -56,20 +49,17 @@ class CategoryController extends Controller
 
 
     {
-       // dd($request->all());
         $request->validate([
-            'category_name' => 'required',
-            'description'=>'required',
-
-        
+            'orderdate' => 'required',
+            
             
             
         ]);
     
-        Category::create($request->all());
+        Order::create($request->all());
      
-        return redirect()->route('categories.index')
-                        ->with('success','Category created successfully.');
+        return redirect()->route('orders.index')
+                        ->with('success','orderdate created successfully.');
     }
      
     /**
@@ -78,14 +68,14 @@ class CategoryController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Order $order)
     {
-        return view('categories.show',compact('category'));
+        return view('orders.show',compact('order'));
     } 
 
-    public function edit(Category $category)
+    public function edit(Order $order)
     {
-        return view('categories.edit',compact('category'));
+        return view('orders.edit',compact('order'));
     }
     
     /**
@@ -95,17 +85,20 @@ class CategoryController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Order $order)
     {
         $request->validate([
-            'category_name' => 'required',
-            
+            'orderdate' => 'required',
+            'status'=>'required',
+            'phone_Number'=>'required',
+            'delivery_address'=>'required',
+            'total_amount'=>'required',
         ]);
     
-        $category->update($request->all());
+        $order->update($request->all());
     
-        return redirect()->route('categories.index')
-                        ->with('success','Category updated successfully');
+        return redirect()->route('orders.index')
+                        ->with('success','orderdate updated successfully');
     }
     
     /**
@@ -115,13 +108,11 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
   
-     public function destroy(Category $category)
+     public function destroy(Order $order)
     {
-        $category->delete();
+        $order->delete();
     
-        return redirect()->route('categories.index')
-                        ->with('success','category deleted successfully');
+        return redirect()->route('orders.index')
+                        ->with('success','orderdate deleted successfully');
     }
-    
-
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Order;
 
 use Illuminate\Http\Request;
 
@@ -35,10 +36,9 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::latest()->paginate(5);
+        $products = Product::with('category')->get();
+        return view('products.indexn',compact('products'));
     
-        return view('products.index',compact('products'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     /**
      * Show the form for creating a new resource.
@@ -46,8 +46,17 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
-        return view('products.create');
+        $categories = Category::all();
+    
+        return view('products.create', compact("categories"));
+        
+        
+        $products = Product::all();
+    
+        return view('products.create', compact("products"));
+        
     }
     
     /**
@@ -61,8 +70,10 @@ class ProductController extends Controller
 
     {
         $request->validate([
-            'prodname' => 'required',
+            'product_name' => 'required',
             'category_id'=>'required',
+            
+            
             
             
         ]);
@@ -99,7 +110,9 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'prodname' => 'required',
+            'product_name' => 'required',
+            'status' => 'required',
+             'description'=>'required',
             
         ]);
     

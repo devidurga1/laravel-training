@@ -19,9 +19,12 @@ class Product extends Model
    use HasFactory;
     protected $fillable = [
         'id',
-        'prodname',
+        'product_name',
         'category_id',
         'order_id',
+        'status',
+        'description',
+        
     ];
   
     public function category()
@@ -33,7 +36,7 @@ class Product extends Model
 
     public function order()
     {
-        return $this->belongsTo(order::class);
+        return $this->belongsTo(Order::class);
     }
 
 
