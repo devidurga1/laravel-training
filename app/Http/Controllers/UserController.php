@@ -49,6 +49,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
+            'status'=>'required',
         ]);
             
         $data = $request->all();
@@ -63,7 +64,10 @@ class UserController extends Controller
       return User::create([
         'name' => $data['name'],
         'email' => $data['email'],
+        'status' => $data['status'],
         'password' => Hash::make($data['password'])
+        
+
       ]);
     }    
      

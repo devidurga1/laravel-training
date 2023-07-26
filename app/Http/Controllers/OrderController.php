@@ -89,7 +89,10 @@ class OrderController extends Controller
     {
         $request->validate([
             'orderdate' => 'required',
-            
+            'status'=>'required',
+            'phone_Number'=>'required',
+            'delivery_address'=>'required',
+            'total_amount'=>'required',
         ]);
     
         $order->update($request->all());

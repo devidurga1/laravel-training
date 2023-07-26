@@ -38,10 +38,23 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>catName:</strong>
-                {{ $category->catname }}
+                <strong>category_Name:</strong>
+                {{ $category->category_name }}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>status:</strong>
+                {{ $category->status }}
             </div>
         </div>
         
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>description</strong>
+                {{ $category->description}}
+            </div>
+        </div>
     </div>
 @endsection

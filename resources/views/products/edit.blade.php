@@ -57,8 +57,22 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>prodName:</strong>
-                    <input type="text" name="prodname" value="{{ $product->prodname }}" class="form-control" placeholder="ProdName">
+                    <strong>productName:</strong>
+                    <input type="text" name="product_name" value="{{ $product->product_name }}" class="form-control" placeholder="Product_Name">
+                </div>
+            </div>
+            
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>status:</strong>
+                    <input type="text" name="status" value="{{ $product->status }}" class="form-control" placeholder="Product_status">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>description</strong>
+                    <input type="text" name="description" value="{{ $product->description }}" class="form-control" placeholder="description">
                 </div>
             </div>
             

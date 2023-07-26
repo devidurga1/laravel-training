@@ -58,7 +58,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>CatName:</strong>
-                    <input type="text" name="catname" value="{{ $category->catname }}" class="form-control" placeholder="CateName">
+                    <input type="text" name="category_name" value="{{ $category->category_name }}" class="form-control" placeholder="CateName">
                 </div>
             </div>
 
@@ -67,6 +67,14 @@
                 <div class="form-group">
                     <strong>status:</strong>
                     <input type="text" name="status" value="{{ $category->status }}" class="form-control" placeholder="status">
+                </div>
+            </div>
+
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong></strong>
+                    <input type="text" name="description" value="{{ $category->description }}" class="form-control" placeholder="description">
                 </div>
             </div>
             

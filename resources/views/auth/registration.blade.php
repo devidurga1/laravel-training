@@ -41,6 +41,11 @@
                     <div class="col-sm-10">
                       <input type="password" class="form-control"  name="password"  id="password" placeholder="Password" required autofocus>
                     </div>
+                    <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Status</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control"  name="status"  id="status" placeholder="Status" required autofocus>
+                    </div>
                   </div>
                   <div class="form-group row">
                     <div class="offset-sm-2 col-sm-10">

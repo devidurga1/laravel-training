@@ -42,6 +42,45 @@
                 {{ $order->orderdate }}
             </div>
         </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>:status</strong>
+                {{ $order->status}}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>phone_Number:</strong>
+                {{ $order->phone_Number }}
+            </div>
+        </div>
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>:delivery_address </strong>
+                {{ $order->delivery_address }}
+            </div>
+        </div>
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>user_name</strong>
+                {{ $order->user_id }}
+            </div>
+        </div>
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>:total_amount</strong>
+                {{ $order->total_amount }}
+            </div>
+        </div>
+
         
     </div>
 @endsection

@@ -38,8 +38,12 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
-        return view('categories.create');
+        $categories = Category::all();
+    
+        return view('products.create', compact("categories"));
+        //return view('categories.create');
     }
     
     /**
@@ -52,9 +56,12 @@ class CategoryController extends Controller
 
 
     {
+       // dd($request->all());
         $request->validate([
-            'catname' => 'required',
-            
+            'category_name' => 'required',
+            'description'=>'required',
+
+        
             
             
         ]);
@@ -91,7 +98,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $request->validate([
-            'catname' => 'required',
+            'category_name' => 'required',
             
         ]);
     

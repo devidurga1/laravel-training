@@ -15,8 +15,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
+            <!--  <li class="breadcrumb-item"><a href="#">Home</a></li>-->
+              <!--<li class="breadcrumb-item active">Starter Page</li>-->
               <li class="breadcrumb-item"><a href="{{ route('orders.index') }}">Back</a></li>
               
             </ol>
@@ -57,12 +57,40 @@
             </div>
         </div>
 
-       <!-- <div class="col-xs-12 col-sm-12 col-md-12">
+       <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-                <strong>category_id:</strong>
-                <input type="number" name="category_id" class="form-control" placeholder="ProName">
+                <strong>status</strong>
+                <input type="text" name="status" class="form-control" placeholder="status">
             </div>
-        </div>-->
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+                <strong>phone_Number</strong>
+                <input type="number" name="phone_number" class="form-control" placeholder="phone_number">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+                <strong>delivery_address</strong>
+                <input type="text" name="delivery_address" class="form-control" placeholder="delivery_address">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+                <strong>user_id</strong>
+                <input type="number" name="user_id" class="form-control" placeholder="user_id">
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+    
+        <div class="form-group">
+                <strong>total_amount</strong>
+                <input type="number" name="total_amount" class="form-control" placeholder="total_amount">
+            </div>
+        </div>
+        
         
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

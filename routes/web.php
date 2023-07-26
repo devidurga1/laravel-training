@@ -22,14 +22,12 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-    return view('layouts.welcome');
+  return view('layouts.welcome');
 });
 
-
-
-Route::resource('products', ProductController::class);
-Route::resource('categories', CategoryController::class);
-Route::resource('orders', OrderController::class);
+//Route::resource('products', ProductController::class);
+//Route::resource('categories', CategoryController::class);
+//Route::resource('orders', OrderController::class);
 
 //Route::get("register", [UserController::class, 'create']);
 //Route::get("login", [UserController::class, 'createlogin']);
@@ -45,38 +43,28 @@ Route::resource('orders', OrderController::class);
 
 
 
-Route::middleware(['user-access'])->group(function() {
-    Route::get('dashboard', [CustomAuthController::class, 'dashboard']) ; 
-     Route::resource('products', ProductController::class);
-   Route::resource('categories', CategoryController::class);
-   Route::resource('orders', OrderController::class);
-    Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
-
+Route::middleware(['user-access'])->group(function () {
+  Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
+  Route::resource('products', ProductController::class);
+  Route::resource('categories', CategoryController::class);
+  Route::resource('orders', OrderController::class);
+  Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 });
 
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
-Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom'); 
+Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
 Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
-Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom'); 
+Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
 //Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
 
 
-Route::prefix('admin')->group( function() {
+Route::prefix('admin')->group(function () {
 
-Route::controller(\App\Http\Controllers\CategoryController::class)->group(function (){
- 
-Route::get('category', 'index');
-Route::get('category/create', 'create');
-Route::post('category' ,'store' );
+  Route::controller(\App\Http\Controllers\CategoryController::class)->group(function () {
 
-
-
-
-
+    Route::get('category', 'index');
+    Route::get('category/create', 'create');
+    Route::post('category', 'store');
+  });
 });
-});
-
-
-
-

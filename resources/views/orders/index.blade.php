@@ -47,6 +47,13 @@
             <th>No</th>
             
             <th>orderdate</th>
+            <td>status</td>
+            <td>phone_Number</td>
+            <td>delivery_address</td>
+            <td>user_id</td>
+            <td>total_amount</td>
+            
+
             
             <th width="280px">Action</th>
         </tr>
@@ -56,6 +63,13 @@
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $order->orderdate }}</td>
+            <td>{{ $order->status }}</td>
+            <td>{{ $order->phone_Number}}</td>
+            <td>{{ $order->delivery_address }}</td>
+            <td>{{ $order->user_id }}</td>
+            <td>{{ $order->total_amount }}</td>
+
+
             
             
             <td>
